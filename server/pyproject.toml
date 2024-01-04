@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "grpc-poc"
+version = "0.1.0"
+description = "Example grpc server implementation in python."
+authors = ["Jerry <ttobba71@gmail.com>"]
+license = "OSS"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.7"
+grpcio = "^1.60.0"
+grpcio-tools = "^1.60.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

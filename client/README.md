@@ -1,0 +1,1 @@
+`bundle exec protoc --proto_path=../server/protos payload.proto --ruby_out=. `
