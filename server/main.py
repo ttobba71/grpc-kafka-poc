@@ -2,7 +2,10 @@ import grpc
 from concurrent import futures
 import time
 
+import payload_pb2
 import payload_pb2_grpc
+import json
+from payload_pb2 import *
 
 
 class DemoService(payload_pb2_grpc.DemogRPCServicer):
@@ -11,10 +14,14 @@ class DemoService(payload_pb2_grpc.DemogRPCServicer):
         pass
 
     def GetResponseFromPayload(self, request, context):
-        message = request.payload_message
+        print('GetResponseFromPayload called')
+        message = json.dumps(request.__str__())
+        print(message)
+        return payload_pb2.ResponseMessage(response_code=200, response_message='Hello Ruby!!')
 
 
 def serve():
+    print('Staring up on port 50051')
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     payload_pb2_grpc.add_DemogRPCServicer_to_server(DemoService(), server)
     server.add_insecure_port('[::]:50051')

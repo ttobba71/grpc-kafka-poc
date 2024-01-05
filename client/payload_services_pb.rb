@@ -2,7 +2,7 @@
 # Source: payload.proto for package ''
 
 require 'grpc'
-require 'payload_pb'
+require_relative 'payload_pb'
 
 module DemogRPC
   class Service
