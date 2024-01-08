@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "avant-msg-test"
+version = "0.1.0"
+description = ""
+authors = ["Jerry <ttobba71@gmail.com>"]
+readme = "README.md"
+packages = [{include = "avant_msg_test"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+avant-messaging-client = {path = "/Users/jabbot18/Documents/source/messaging-client/avant-messaging-client/dist/avant_messaging_client-0.1.2.3-py3-none-any.whl", extras = ["aiokafka"]}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+

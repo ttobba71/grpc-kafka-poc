@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 postgres_data
+.git/
 
 __pycache__/
 *.py[cod]

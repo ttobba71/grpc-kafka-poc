@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/avant-confluent-ops" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/avant-messaging-client-before-rename" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/broker-models" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/learn-kafka-courses" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/messaging-client" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/super-cereal" vcs="Git" />
+  </component>
+</project>
