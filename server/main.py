@@ -21,10 +21,10 @@ class DemoService(payload_pb2_grpc.DemogRPCServicer):
 
 
 def serve():
-    print('Staring up on port 50051')
+    print('Staring up on port 8088')
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     payload_pb2_grpc.add_DemogRPCServicer_to_server(DemoService(), server)
-    server.add_insecure_port('[::]:50051')
+    server.add_insecure_port('[::]:8088')
     server.start()
     server.wait_for_termination()
 

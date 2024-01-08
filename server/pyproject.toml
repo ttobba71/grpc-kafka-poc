@@ -10,7 +10,8 @@ readme = "README.md"
 python = "3.11.7"
 grpcio = "^1.60.0"
 grpcio-tools = "^1.60.0"
-
+pydantic = "^2.5.3"
+messaging-client = "^0.0.5"
 
 [build-system]
 requires = ["poetry-core"]

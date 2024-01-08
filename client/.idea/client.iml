@@ -12,82 +12,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="google-protobuf (v3.23.4) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/google-protobuf-3.23.4-arm64-darwin/ext" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/google-protobuf-3.23.4-arm64-darwin/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/google-protobuf-3.23.4-arm64-darwin/ext" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/google-protobuf-3.23.4-arm64-darwin/lib" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/google-protobuf-3.23.4-arm64-darwin/ext" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="googleapis-common-protos-types (v1.11.0) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/googleapis-common-protos-types-1.11.0/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/googleapis-common-protos-types-1.11.0/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="grpc (v1.58.0) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/etc" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/src" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/include" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/third_party" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/etc" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/src" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/include" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/third_party" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/etc" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/src" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/include" />
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-1.58.0/third_party" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library name="grpc-tools (v1.60.0) [path][gem]" type="rubylib">
-        <properties>
-          <option name="version" value="4" />
-        </properties>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-tools-1.60.0/bin" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-tools-1.60.0/bin" />
-        </SOURCES>
-        <excluded>
-          <root url="file://$MODULE_DIR$/.bundle/ruby/2.6.0/gems/grpc-tools-1.60.0/bin" />
-        </excluded>
-      </library>
-    </orderEntry>
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.4.21, ruby-2.6.10-p210) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-protobuf (v3.23.4, ruby-2.6.10-p210) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="googleapis-common-protos-types (v1.11.0, ruby-2.6.10-p210) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="grpc-tools (v1.60.0, ruby-2.6.10-p210) [gem]" level="application" />
   </component>
 </module>

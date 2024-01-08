@@ -4,6 +4,7 @@ require_relative 'payload_services_pb'
 require_relative 'payload_pb'
 
 puts "test-before-main"
+
 def main
   puts "test"
   stub = DemogRPC::Stub.new('localhost:50051', :this_channel_is_insecure)

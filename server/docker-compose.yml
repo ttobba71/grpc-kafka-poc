@@ -1,0 +1,76 @@
+version: "3.8"
+
+services:
+  zookeeper:
+    image: "confluentinc/cp-zookeeper"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 32181
+    restart: always
+
+  kafka:
+    image: confluentinc/cp-kafka:7.3.1
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:32181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_BROKER_ID: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+    restart: always
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:7.3.1
+    depends_on:
+      - kafka
+      - zookeeper
+    ports:
+      - 8090:8090
+    environment:
+      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:29092
+      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:32181
+      - SCHEMA_REGISTRY_HOST_NAME=schema-registry-server
+      - SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8090
+      - SCHEMA_REGISTRY_DEBUG=true
+
+  kafka-topics:
+    image: confluentinc/cp-kafka:7.3.1
+    command: "kafka-topics --bootstrap-server kafka:29092 --create --replication-factor 1 --partitions 2 --topic topic"
+    depends_on:
+      - kafka
+      - zookeeper
+    links:
+      - kafka
+      - zookeeper
+
+  postgres:
+    hostname: postgres
+    build:
+      context: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_DATABASES=${POSTGRES_NAME:-decisioning}
+    ports:
+      - "5432:5432"
+
+  python-grpc-server:
+    tty: true
+    stdin_open: true
+    image: python-grpc-server:latest
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "8088:8088"
+    depends_on:
+      - postgres
+      - zookeeper
+      - kafka
+      - schema-registry
