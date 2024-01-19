@@ -11,7 +11,13 @@ python = "3.11.7"
 grpcio = "^1.60.0"
 grpcio-tools = "^1.60.0"
 pydantic = "^2.5.3"
-messaging-client = "^0.0.5"
+messaging-client = "0.6.3"
+confluent-kafka = "^2.3.0"
+
+[[tool.poetry.source]]
+name = "jfrog"
+url = "https://avant.jfrog.io/artifactory/main-pypi/"
+priority = "primary"
 
 [build-system]
 requires = ["poetry-core"]
