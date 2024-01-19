@@ -2,50 +2,33 @@ import datetime
 
 import grpc
 from concurrent import futures
-import time
 
 import payload_pb2
 import payload_pb2_grpc
 import json
 import datetime
 
-import asyncio
-from avant.messaging import Driver
-
-from payload_pb2 import *
-
-
-# import dataclasses
-# import logging
-# import uuid
-# from super_cereal.cerealizer.encryption import Encrypted
-# from avant.messaging import Driver
+from copy import copy
+from google.protobuf.descriptor import FieldDescriptor
+from protobuf_to_dict import protobuf_to_dict, TYPE_CALLABLE_MAP
 
 
-class KafkaDemo:
-    producer_name = 'risk_determination_request'
-
-    def __init__(self, config_path):
-        self.config_path = config_path
-
-    async def produce_msg_to_topic(self, message):
-        driver: Driver = Driver.driver_from_config(self.config_path)
-        async with driver.producer(self.producer_name) as producer:
-            await producer.send(key=message.id, msg=message)
-
+type_callable_map = copy(TYPE_CALLABLE_MAP)
+type_callable_map[FieldDescriptor.TYPE_BYTES] = str
 
 class DemoService(payload_pb2_grpc.DemogRPCServicer):
 
     def __init__(self, *args, **kwargs):
         pass
 
+
     def GetResponseFromPayload(self, request, context):
         print(f'GetResponseFromPayload called - {datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")}')
-        message = json.dumps(request.__str__())
-        print(message)
-        kd = KafkaDemo("./messaging-client.ini")
-        asyncio.run(kd.produce_msg_to_topic(message))
-        return payload_pb2.ResponseMessage(response_code=200, response_message='Hello Ruby!!')
+        req_dict = protobuf_to_dict(request)
+        print( f'id-{req_dict["id"]} --- {req_dict}')
+        return payload_pb2.ResponseMessage(id=req_dict["id"], response_code=200, response_message=f'Hello Ruby from '
+                                                                                              f'Python!! Processed '
+                                                                                              f'id: {req_dict["id"]}')
 
 
 def serve():
